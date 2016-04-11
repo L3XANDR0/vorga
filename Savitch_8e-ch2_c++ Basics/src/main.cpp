@@ -10,16 +10,254 @@
 using namespace std;
 
 void exercises();
-
 void tonsOCereal();
+void sweetener();
+void ch2Project3();
+void ch2Project4();
+void ch2Project5();
+void ch2Project6();
+void ch2Project7();
 
 int main() {
 
 	//exercises();
-
 	//tonsOCereal();
+	//sweetener(); //ch2 project 2
+	//ch2Project3();
+	//ch2Project4();
+	//ch2Project5();
+	//ch2Project6();
+	//ch2Project7();
 
 	return 0;
+}
+
+void ch2Project7(){
+	int weeklyHours, answer, numberDependent, extraDependentFee = 0;
+	double grossPay, netPay, socialWithheld, fedWithheld, stateWithheld;
+	const double social = .06, fedTax = .14, stateTax = .05, unionFees = 10, hourlyRate = 16.75, fortyHourPay=40*hourlyRate,
+	overtimeRate = hourlyRate * 1.5;
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	do{
+		cout << "Enter hours worked this week:\n";
+		cin >> weeklyHours;
+
+		cout << "Enter number of dependents:\n";
+		cin >> numberDependent;
+
+		if( weeklyHours <= 40 && weeklyHours > 0 && weeklyHours < 168 && numberDependent >= 0){
+			cout << "Gross pay: $" << (grossPay = weeklyHours * hourlyRate) << endl;
+			cout << "Social Security withheld: $" << (socialWithheld = grossPay * social) << endl;
+			cout << "Federal income tax withheld: $" << (fedWithheld = grossPay * fedTax) << endl;
+			cout << "State income tax withheld: $" << (stateWithheld = grossPay * stateTax) << endl;
+			cout << "Union fee's: $" << unionFees << endl;
+			if( numberDependent < 3){
+				cout << "Extra dependent fee: $" << extraDependentFee << endl;
+				cout << "Net pay: $" << (netPay = grossPay * (1 - (social + fedTax + stateTax)) - extraDependentFee ) << endl;
+			}
+			else{
+				cout << "Extra dependent fee: $" << (extraDependentFee = 35) << endl;
+				cout << "Net pay: $" << (netPay = grossPay * (1 - (social + fedTax + stateTax)) - extraDependentFee ) << endl;
+			}
+		}
+		else if(weeklyHours > 40 && weeklyHours > 0 && weeklyHours < 168 && numberDependent >= 0){
+			cout << "Gross pay: $" << (grossPay = fortyHourPay + ( (weeklyHours - 40) * overtimeRate)) << endl;
+			cout << "Social Security withheld: $" << (socialWithheld = grossPay * social) << endl;
+			cout << "Federal income tax withheld: $" << (fedWithheld = grossPay * fedTax) << endl;
+			cout << "State income tax withheld: $" << (stateWithheld = grossPay * stateTax) << endl;
+			cout << "Union fee's: $" << unionFees << endl;
+			if( numberDependent < 3){
+				cout << "Extra dependent fee: $" << extraDependentFee << endl;
+				cout << "Net pay: $" << (netPay = grossPay * (1 - (social + fedTax + stateTax)) - extraDependentFee ) << endl;
+			}
+			else{
+				cout << "Extra dependent fee: $" << (extraDependentFee = 35);
+				cout << "Net pay: $" << (netPay = grossPay * (1 - (social + fedTax + stateTax)) - extraDependentFee ) << endl;
+			}
+		}
+
+		extraDependentFee = 0;
+
+		cout << "\n\nWould you like to recalculate: 0-no, 1-yes\n";
+
+		while(!(cin >> answer)){
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Invalid input. Try again: 0-no, 1-yes\n";
+		}
+	}while(1 == answer);
+}
+
+void ch2Project6(){
+	int maxCapacity, peopleInvited, answer;
+
+	do{
+		cout << "Enter the maximum room capacity:\n";
+		cin >> maxCapacity;
+
+		cout << "Enter number of meeting attendee's:\n";
+		cin >> peopleInvited;
+
+		if( peopleInvited <= maxCapacity){
+			cout << "You have not exceeded the maximum room capacity!\n";
+			cout << "You may invite " << maxCapacity - peopleInvited << " more guests!\n";
+		}
+		else{
+			cout << "You have exceeded the maximum room capacity!\n";
+			cout << "You reduce attendee list by " << peopleInvited - maxCapacity<< " to meet regulation standards!\n";
+		}
+
+		cout << "Would you like to recalculate: 0-no, 1-yes\n";
+
+		while(!(cin >> answer)){
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Invalid input. Try again: 0-no, 1-yes\n";
+		}
+	}while(1 == answer);
+}
+
+void ch2Project5(){
+
+	double moneyNeed, loanAmount, interestRate, monthlyPayment, duration;
+	int answer;
+
+	do{
+		cout << "Enter the amount of money you need:\n";
+		cin >> moneyNeed;
+
+		cout << "Enter the interest rate:\n";
+		cin >> interestRate; interestRate = interestRate/100;
+		cout << "Interest rate entered: " << interestRate << endl;
+
+
+		cout << "Enter the duration of the loan in months:\n";
+		cin >> duration;
+
+		loanAmount = moneyNeed/(1-(interestRate)*(duration/12));
+		cout << "Your loan amount is: " << loanAmount << endl;
+
+		monthlyPayment = loanAmount/duration;
+		cout << "Your monthly payment is: " << monthlyPayment << endl;
+
+		cout << "Would you like to recalculate: 0-no, 1-yes\n";
+
+		while(!(cin >> answer)){
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Invalid input. Try again: 0-no, 1-yes\n";
+		}
+	}while(1 == answer);
+}
+
+void ch2Project4(){
+	double oldSalary, monthsOfBackpay, backpay, newSalary, newMonthlySalary;
+	const double payIncrease = .076; // 7.6%
+	int answer;
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	do{
+		cout << "Enter salary before 7.6% increase:\n";
+		cin >> oldSalary;
+
+		cout << "Enter number of months of backpay: \n";
+		cin >> monthsOfBackpay;
+
+		backpay = ((monthsOfBackpay/12)*oldSalary)*payIncrease;
+		cout << "Your backpay is: " << backpay << endl;
+
+		newSalary = (oldSalary * payIncrease) + oldSalary;
+		cout << "Your new salary is: " << newSalary << endl;
+
+		newMonthlySalary = newSalary/12;
+		cout << "Your monthly salary: " << newMonthlySalary << endl;
+
+		cout << "Would you like to recalculate: 0-no, 1-yes\n";
+
+		while(!(cin >> answer)){
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Invalid input. Try again:\n";
+		}
+	}while(1 == answer);
+
+}
+
+void ch2Project3(){
+	double oldSalary, sixMonthSalary, backpay, newSalary, newMonthlySalary;
+	const double payIncrease = .076; // 7.6%
+	int answer;
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	do{
+		cout << "Enter salary before 7.6% increase:\n";
+		cin >> oldSalary;
+
+		sixMonthSalary = (oldSalary/2);
+		backpay = sixMonthSalary*payIncrease;
+		cout << "Your backpay is: " << backpay << endl;
+
+		newSalary = (oldSalary * payIncrease) + oldSalary;
+		cout << "Your new salary is: " << newSalary << endl;
+
+		newMonthlySalary = newSalary/12;
+		cout << "Your monthly salary: " << newMonthlySalary << endl;
+
+		cout << "Would you like to recalculate: 0-no, 1-yes\n";
+
+		while(!(cin >> answer)){
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Invalid input. Try again:\n";
+		}
+	}while(1 == answer);
+
+}
+
+void sweetener(){
+
+	double sweetenerDatKillsRatInOunces, parts;
+	int mouseWeight, dieterWeight, weightRatio, answer, sodaQuantityDatKills;
+	const double sweetenerInSoda = (.001)*(1/10);
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(10);
+
+	do{
+		cout << "How much artificial sweetener kills the mouse (in ounces):\n";
+		cin >> sweetenerDatKillsRatInOunces; // 1 ounce
+		cout << "Enter the mouse weight:\n";
+		cin >> mouseWeight; // 2 lbs
+		cout << "Enter dieter weight goal:\n";
+		cin >> dieterWeight; // 120 lbs
+
+		weightRatio = dieterWeight/mouseWeight;
+		cout << "Weight ratio: " << weightRatio << endl;
+		parts = sweetenerInSoda/sweetenerDatKillsRatInOunces;
+		cout << "Parts that kill: " << parts << endl;
+		sodaQuantityDatKills = weightRatio/parts;
+		cout << "Number of sodas until death: " << sodaQuantityDatKills << endl;
+
+		cout << "You can drink this many sodas before death: " << sodaQuantityDatKills << endl;
+		cout << "Would you like to recalculate: 0-no, 1-yes\n";
+
+		while(!(cin >> answer)){
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Invalid input. Try again:\n";
+		}
+	}while(1 == answer);
 }
 
 void tonsOCereal(){

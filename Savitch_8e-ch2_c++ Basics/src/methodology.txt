@@ -1,0 +1,46 @@
+The following are some notes taken for chapter 2:
+
+Ch2 Project 5 - Calculate Discount Installment Loan
+
+	Example:
+		loan -> $1000
+		interestRate -> 15%
+		duration -> 18 months
+		
+		interest	= loan * interestRate * duration
+				 	= 1000 * .15 * 18/12
+				 	= $225 
+				 	
+	 	money2Consumer	= loan - interest
+	 					= 1000 - 225
+	 					= $775
+ 					
+	Want:
+		program inputs: amount consumer needs (money2Consumer), interest rate, and duration of loan in months
+		
+		program outputs: face value calculation (money2Consumer + interest) and monthly payments on face value loan
+		
+	Algoithm 1 (calculate face value):
+		
+		money2Consumer = loan - interest , we do not know the 'loan' variable ie face value, but other 2 var's are known
+		
+		money2Consumer = loan - (loan * interestRate * duration) , substitute 'interest'
+		
+		money2Consumer = loan * ( 1 - interestRate * duration )
+		
+		loan = money2Consumer / ( 1 - interestRate * duration )
+		
+	Algorithm 2 (calculate monthly payments):
+		
+		monthlyPayments = loan / duration
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		 
