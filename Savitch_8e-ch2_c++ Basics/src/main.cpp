@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 void exercises();
@@ -17,6 +18,10 @@ void ch2Project4();
 void ch2Project5();
 void ch2Project6();
 void ch2Project7();
+void ch2Project8();
+void ch2Project9();
+void ch2Project10();
+void ch2Project12();
 
 int main() {
 
@@ -28,8 +33,94 @@ int main() {
 	//ch2Project5();
 	//ch2Project6();
 	//ch2Project7();
+	//ch2Project8();
+	//ch2Project9();
+	//ch2Project10();
+	//ch2Project12();
+
+
+
 
 	return 0;
+}
+
+void ch2Project10(){
+	int k, number, count = 10, posSum = 0, negSum = 0, total = 0;
+
+	for(k = 0; k < count; k++){
+		cout << "Enter a number: \n";
+		cin >> number;
+
+		if(number > 0){
+			posSum += number;
+		}
+		else{
+			negSum += number;
+		}
+
+		total += number;
+	}
+
+	cout << "Sum of positive numbers: " << posSum << endl;
+	cout << "Sum of negative numbers: " << negSum << endl;
+	cout << "Sum of all numbers: " << total << endl;
+}
+
+void ch2Project9(){
+	double stereoCost = 1000, monthlyInterestRate = .015, monthlyPayment = 50;
+	double interestAccrued = 0, interest = 0;
+	int months = 0;
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	cout << "Calculating how many month's it will take to pay off your $1000 radio purchase...\n";
+
+	while(stereoCost > 0){
+		interest = (stereoCost * monthlyInterestRate);
+		interestAccrued += interest;
+		stereoCost = stereoCost - (monthlyPayment - interest);
+
+		months++;
+
+		if(stereoCost < 0){
+			cout << "You have overpaid for this month, and the following amount is being returned: $" << abs(stereoCost) << endl;
+			cout << "It has taken " << months << " months to pay off your stereo!\n";
+			cout << "Interest paid: $" << interestAccrued << endl;
+		}
+		else if(stereoCost == 0){
+			cout << "It has taken " << months << " to pay off your stereo!\n";
+			cout << "Interest paid: $" << interestAccrued << endl;
+		}
+	}
+}
+
+
+void ch2Project8(){
+	double itemCost, inflationRate;
+	int years, k = 0;
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	cout << "Enter the item cost:\n";
+	cin >> itemCost;
+
+	cout << "Enter the years from today purchase will occur:\n";
+	cin >> years;
+
+	cout << "Enter the expected inflation rate:\n";
+	cin >> inflationRate;
+	inflationRate = inflationRate/100;
+
+	while( k < years){
+		itemCost *= (1 + inflationRate);
+		k++;
+	}
+
+	cout << "Expected price: $" << itemCost << endl;
 }
 
 void ch2Project7(){
