@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -21,7 +22,12 @@ void ch2Project7();
 void ch2Project8();
 void ch2Project9();
 void ch2Project10();
-void ch2Project12();
+void ch2Project13();
+void ch2Project14();
+void ch2Project15();
+void ch2Project16();
+void ch2Project17();
+
 
 int main() {
 
@@ -36,12 +42,121 @@ int main() {
 	//ch2Project8();
 	//ch2Project9();
 	//ch2Project10();
-	//ch2Project12();
+	//ch2Project13();
+	//ch2Project14();
+	//ch2Project15();
+	//ch2Project16();
+	//ch2Project17();
+
 
 
 
 
 	return 0;
+}
+
+void ch2Project16(){
+	double radius, vm;
+	const double pi = 3.1415, const1 = 4.0/3.0;
+
+	cout << "Enter radius of a sphere.\n";
+	cin >> radius;
+
+	vm = const1 * pi * radius * radius * radius;
+
+	cout << "The volume is " << vm << endl;
+}
+
+void ch2Project15(){
+	double startingTemp, endTemp, rangeTemp, velocitySound, k;
+	const double const1 = 331.3, const2 = .61;
+
+	cout << "Enter the starting temperature in celcius:\n";
+	cin >> startingTemp;
+
+	cout << "Enter the ending temperature in celcius:\n";
+	cin >> endTemp;
+
+	if(startingTemp < endTemp){
+		k = startingTemp;
+
+		if(startingTemp == 0){
+			rangeTemp = (endTemp - startingTemp);
+		}
+		else{
+			rangeTemp = (endTemp - startingTemp) + 1; // add 1 to make range inclusive
+		}
+
+		while(k <= rangeTemp){
+			velocitySound = const1 + ( const2 * k );
+			cout << "At " << k << " degrees Celcius the velocity of sound is " << velocitySound << " m/s\n";
+			k++;
+		}
+	}
+	else{ // startingTemp > endTemp : count down
+		k = startingTemp;
+
+		if(startingTemp == 0){
+			rangeTemp = (endTemp - startingTemp);
+		}
+		else{
+			rangeTemp = (endTemp - startingTemp) - 1; // add 1 to make range inclusive
+		}
+
+		while( k >= rangeTemp ){
+			velocitySound = const1 + ( const2 * k );
+			cout << "At " << k << " degrees Celcius the velocity of sound is " << velocitySound << " m/s\n";
+			k--;
+		}
+	}
+}
+
+void ch2Project14(){
+	string instructorName, yourName, food, number, adjective, color, animal;
+
+	cout << "Enter first or last name of your favorite instructor:\n";
+	cin >> instructorName;
+
+	cout << "Enter your name:\n";
+	cin >> yourName;
+
+	cout << "Enter your favorite food:\n";
+	cin >> food;
+
+	cout << "Enter a number between 100 and 120:\n";
+	cin >> number;
+
+	cout << "Enter an adjective:\n";
+	cin >> adjective;
+
+	cout << "Enter a color:\n";
+	cin >> color;
+
+	cout << "Enter an animal:\n";
+	cin >> animal;
+
+	cout << "Dear Instructor " << instructorName << ",\n\n" << "I am sorry that I am unable to turn in my homework at this time."
+		 << "First, I ate a rotten " << food << ", which made me turn " << color << " and extremely ill. I came down with a fever of "
+		 << number << ". Next, my " << adjective << " pet " << animal << " must have smelled the remains of the " << food
+		 << " on my homework, because he ate it. I am currently rewriting my homework and hope you will accept it late."
+		 << endl << endl << "Sincerely,\n" << yourName;
+}
+
+void ch2Project13(){
+	double milesPerHour, minutesPerMile, secondsPerMile;
+	int minutes, seconds;
+
+	cout << "Enter miles per hour:\n";
+	cin >> milesPerHour;
+
+	minutesPerMile = 60/milesPerHour;
+	minutes = static_cast<int>(minutesPerMile);
+
+	secondsPerMile = minutesPerMile - minutes;
+	seconds = secondsPerMile * 60;
+
+	cout << "Minutes per mile: " << minutes << endl;
+	cout << "Seconds per mile: " << seconds << endl;
 }
 
 void ch2Project10(){
