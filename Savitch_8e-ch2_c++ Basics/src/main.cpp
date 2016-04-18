@@ -9,6 +9,8 @@
 #include <iostream>
 #include <cstring>
 #include <cmath>
+#include <exception>
+
 using namespace std;
 
 void exercises();
@@ -27,13 +29,16 @@ void ch2Project14();
 void ch2Project15();
 void ch2Project16();
 void ch2Project17();
+void ch2Project18();
+void ch2Project19();
 
 
 int main() {
 
 	//exercises();
 	//tonsOCereal();
-	//sweetener(); //ch2 project 2
+	//sweetener();
+	//ch2 project 2
 	//ch2Project3();
 	//ch2Project4();
 	//ch2Project5();
@@ -47,12 +52,88 @@ int main() {
 	//ch2Project15();
 	//ch2Project16();
 	//ch2Project17();
-
-
-
-
+	//ch2Project18();
+	//ch2Project19();
 
 	return 0;
+}
+
+void ch2Project19(){
+	int exerciseQuantity, k = 0;
+	double creditReceived = 0, creditTotal = 0, temp = 0;
+
+	cout << "How many exercises to input: ";
+	cin >> exerciseQuantity;
+	cout << endl;
+
+	while( k < exerciseQuantity){
+		cout << "Score received for exercise " << (k+1) << ":";
+		cin >> temp;
+		creditReceived += temp;
+
+		cout << "Total points possible for exercise " << (k+1) << ":";
+		cin >> temp;
+		creditTotal += temp;
+
+		cout << endl;
+		k++;
+	}
+
+	cout << "Your total is " << creditReceived << " out of " << creditTotal << ", or " << (creditReceived/creditTotal)*100;
+}
+
+void ch2Project18(){
+	const double chocolateBarCalories = 230;
+	double weight, height, bmr, candy;
+	int age;
+	string sex;
+
+	cout << "Enter weight in pounds:\n";
+	cin >> weight;
+
+	cout << "Enter height in inches:\n";
+	cin >> height;
+
+	cout << "Enter age in years:\n";
+	cin >> age;
+
+	cout << "Enter sex: F - Female or M - Male\n";
+	cin >> sex;
+
+	if(sex.compare("F") == 0 ){
+		bmr = 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
+	}
+	else if(sex.compare("M") == 0 ){
+		bmr = 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
+	}
+	else{
+		cout << "Entered the wrong sex!\nRestart the program!\n";
+		throw exception();
+	}
+
+	candy = bmr/chocolateBarCalories;
+
+	cout << "Your BMR is: " << bmr << endl;
+	cout << "You can eat " << candy << " chocolate bars!!!\n";
+}
+
+void ch2Project17(){
+	double wellRadius, wellDepth, wellVolume, gallonsInWell;
+	const double pi = 3.1415926535897, gallonsPerFeetCubed = 7.48, feetSquaredInInches = 144;
+
+	cout << "Enter the well radius in inches:\n";
+	cin >> wellRadius;
+
+	cout << "Enter the well depth in feet:\n";
+	cin >> wellDepth;
+
+	wellRadius = wellRadius * wellRadius; // r^2
+	wellRadius = wellRadius / feetSquaredInInches; // convert inches squared to feet squared
+
+	wellVolume = pi * wellRadius * wellDepth;
+	gallonsInWell = wellVolume * gallonsPerFeetCubed;
+
+	cout << "Gallons in well: " << gallonsInWell << " gallons\n";
 }
 
 void ch2Project16(){
